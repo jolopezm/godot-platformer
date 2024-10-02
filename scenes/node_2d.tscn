@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://dsvwfxbx5pt3s"]
+[gd_scene load_steps=5 format=4 uid="uid://dsvwfxbx5pt3s"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://cyirqdplt0r7n" path="res://scenes/player controller/character_controller.tscn" id="1_10ro6"]
+[ext_resource type="Texture2D" uid="uid://dq31eqw7n7n4e" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_lvbd2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_po0cv"]
+texture = ExtResource("2_lvbd2")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:0/0 = 0
+0:1/0 = 0
+5:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_olxxn"]
+tile_size = Vector2i(18, 18)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_po0cv")
+
+[node name="world" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_10ro6")]
+position = Vector2(299, 129)
+
+[node name="TilemapLayer" type="TileMapLayer" parent="."]
+use_parent_material = true
+position = Vector2(271, 144)
+tile_map_data = PackedByteArray("AAD+/wEAAAACAAAAAAD//wEAAAACAAAAAAAAAAEAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_olxxn")
