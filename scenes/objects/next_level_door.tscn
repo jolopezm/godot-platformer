@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d36rfnxgsxeo6"]
+
+[ext_resource type="Script" path="res://scripts/objects/NextLevelDoor.cs" id="1_o8mmb"]
+[ext_resource type="Texture2D" uid="uid://dq31eqw7n7n4e" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_y1aoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sder"]
+size = Vector2(8, 17)
+
+[node name="NextLevelDoor" type="Area2D"]
+collision_mask = 256
+script = ExtResource("1_o8mmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 0)
+texture = ExtResource("1_y1aoy")
+region_enabled = true
+region_rect = Rect2(180, 90, 18, 36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 7.5)
+shape = SubResource("RectangleShape2D_4sder")
+debug_color = Color(0.849442, 0.189831, 0.789314, 0.42)

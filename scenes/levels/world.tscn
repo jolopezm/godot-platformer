@@ -1,0 +1,199 @@
+[gd_scene load_steps=8 format=4 uid="uid://bq1bcnkklsfo6"]
+
+[ext_resource type="PackedScene" uid="uid://cyirqdplt0r7n" path="res://scenes/player controller/character_controller.tscn" id="1_0aynl"]
+[ext_resource type="TileSet" uid="uid://yxu7civj8xjb" path="res://resources/tileset.tres" id="2_k4mq1"]
+[ext_resource type="Script" path="res://scripts/ui/Gui.cs" id="3_4261o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxk44"]
+content_margin_left = 3.0
+bg_color = Color(0.12549, 0.207843, 0.384314, 1)
+border_width_left = 98
+border_width_top = 6
+border_width_right = 3
+border_width_bottom = 6
+border_color = Color(0.117647, 0.341176, 0.611765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 93.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+shadow_size = 1
+shadow_offset = Vector2(3, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojvn7"]
+bg_color = Color(0, 0.596078, 0.858824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghr8x"]
+font_size = 9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3abcq"]
+size = Vector2(20, 161)
+
+[node name="World" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(30, -8)
+tile_map_data = PackedByteArray("AAAAAAsAAAACAAEAAAABAAsAAAACAAEAAAACAAsAAAACAAEAAAADAAsAAAACAAEAAAAEAAsAAAACAAEAAAAFAAsAAAACAAEAAAAGAAsAAAACAAEAAAAHAAsAAAACAAEAAAAIAAsAAAACAAEAAAAJAAsAAAACAAEAAAAKAAsAAAACAAEAAAAAAAwAAAAEAAAAAAAAAA0AAAAEAAEAAAABAAwAAAAFAAAAAAACAAwAAAAEAAAAAAACAA0AAAAFAAAAAAADAAwAAAAFAAAAAAAEAAwAAAAEAAAAAAAEAA0AAAAFAAAAAAAFAAwAAAAFAAAAAAAGAAwAAAAEAAAAAAAGAA0AAAAFAAAAAAAHAAwAAAAFAAAAAAAIAAwAAAAEAAAAAAAIAA0AAAAFAAAAAAAJAAwAAAAFAAAAAAAKAAwAAAAEAAAAAAAKAA0AAAAFAAAAAAABAA0AAAAEAAAAAAADAA0AAAAEAAAAAAAFAA0AAAAEAAAAAAAHAA0AAAAEAAAAAAAJAA0AAAAEAAAAAAD//wsAAAACAAEAAAD+/wsAAAACAAEAAAD+/wwAAAAEAAAAAAD+/w0AAAAEAAEAAAD//wwAAAAEAAAAAAD//w0AAAAEAAEAAAALAAsAAAACAAEAAAAMAAsAAAACAAEAAAANAAsAAAACAAEAAAAOAAsAAAACAAEAAAALAAwAAAAEAAEAAAALAA0AAAAEAAEAAAAMAA0AAAAEAAEAAAAMAAwAAAAEAAEAAAANAAwAAAAEAAEAAAANAA0AAAAEAAEAAAAOAA0AAAAEAAEAAAAOAAwAAAAEAAEAAAAPAAsAAAACAAEAAAAQAAsAAAACAAEAAAARAAsAAAACAAEAAAASAAsAAAACAAEAAAAPAAwAAAAEAAEAAAAPAA0AAAAEAAEAAAAQAA0AAAAEAAEAAAAQAAwAAAAEAAEAAAARAAwAAAAEAAEAAAARAA0AAAAEAAEAAAASAA0AAAAEAAEAAAASAAwAAAAEAAEAAAA=")
+tile_set = ExtResource("2_k4mq1")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_0aynl")]
+position = Vector2(76, 129)
+
+[node name="GUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_4261o")
+
+[node name="RunVelocitySlider" type="HSlider" parent="GUI"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 8.0
+offset_right = 512.0
+offset_bottom = 37.0
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_sxk44")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ojvn7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ojvn7")
+min_value = 1.0
+value = 50.0
+
+[node name="Label" type="Label" parent="GUI/RunVelocitySlider"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 5.0
+offset_right = -32.0
+offset_bottom = 28.0
+text = "Velocidad:"
+label_settings = SubResource("LabelSettings_ghr8x")
+
+[node name="RunSliderValue" type="Label" parent="GUI/RunVelocitySlider"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_ghr8x")
+horizontal_alignment = 2
+
+[node name="JumpHeightSlider" type="HSlider" parent="GUI"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 38.0
+offset_right = 512.0
+offset_bottom = 67.0
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_sxk44")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ojvn7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ojvn7")
+min_value = 1.0
+max_value = 500.0
+value = 300.0
+
+[node name="Label" type="Label" parent="GUI/JumpHeightSlider"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 5.0
+offset_right = -32.0
+offset_bottom = 28.0
+text = "Jump H:"
+label_settings = SubResource("LabelSettings_ghr8x")
+
+[node name="JumpSliderValue" type="Label" parent="GUI/JumpHeightSlider"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_ghr8x")
+horizontal_alignment = 2
+
+[node name="AccelerationSlider" type="HSlider" parent="GUI"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 68.0
+offset_right = 512.0
+offset_bottom = 97.0
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_sxk44")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ojvn7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ojvn7")
+min_value = 1.0
+max_value = 1000.0
+step = 20.0
+value = 101.0
+
+[node name="Label" type="Label" parent="GUI/AccelerationSlider"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 5.0
+offset_right = -32.0
+offset_bottom = 28.0
+text = "Acceleration:
+"
+label_settings = SubResource("LabelSettings_ghr8x")
+
+[node name="AccSliderValue" type="Label" parent="GUI/AccelerationSlider"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_ghr8x")
+horizontal_alignment = 2
+
+[node name="FrictionSlider" type="HSlider" parent="GUI"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 97.0
+offset_right = 512.0
+offset_bottom = 126.0
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_sxk44")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_ojvn7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_ojvn7")
+min_value = 1.0
+max_value = 1000.0
+step = 20.0
+value = 101.0
+
+[node name="Label" type="Label" parent="GUI/FrictionSlider"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 5.0
+offset_right = -32.0
+offset_bottom = 28.0
+text = "Friction:
+"
+label_settings = SubResource("LabelSettings_ghr8x")
+
+[node name="FricSliderValue" type="Label" parent="GUI/FrictionSlider"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_ghr8x")
+horizontal_alignment = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(-1, -8)
+
+[node name="Wall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-12, 117)
+shape = SubResource("RectangleShape2D_3abcq")
+debug_color = Color(0.266132, 0.554252, 0.821598, 0.42)
+
+[node name="Wall2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(374, 116)
+shape = SubResource("RectangleShape2D_3abcq")
+debug_color = Color(0.266132, 0.554252, 0.821598, 0.42)

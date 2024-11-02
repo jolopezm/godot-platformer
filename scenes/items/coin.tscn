@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://df6cu8itykah5"]
+
+[ext_resource type="Script" path="res://scripts/objects/Coin.cs" id="1_p16i1"]
+[ext_resource type="Texture2D" uid="uid://dq31eqw7n7n4e" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_u45gr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk6up"]
+atlas = ExtResource("1_u45gr")
+region = Rect2(198, 128, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk0re"]
+atlas = ExtResource("1_u45gr")
+region = Rect2(216, 128, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_id4ke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk6up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk0re")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkle5"]
+radius = 8.0
+
+[node name="coin" type="Area2D"]
+script = ExtResource("1_p16i1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, 8)
+sprite_frames = SubResource("SpriteFrames_id4ke")
+animation = &"idle"
+frame_progress = 0.946138
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 7)
+shape = SubResource("CircleShape2D_mkle5")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

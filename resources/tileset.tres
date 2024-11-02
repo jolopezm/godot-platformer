@@ -1,0 +1,25 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://yxu7civj8xjb"]
+
+[ext_resource type="Texture2D" uid="uid://dq31eqw7n7n4e" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_652bv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_po0cv"]
+texture = ExtResource("1_652bv")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, 9, 9, -9, 9)
+3:1/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+1:0/0 = 0
+0:1/0 = 0
+5:0/0 = 0
+
+[resource]
+tile_size = Vector2i(18, 18)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_po0cv")
